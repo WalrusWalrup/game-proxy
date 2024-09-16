@@ -1,2 +1,10 @@
-// Set the source of the iframe to the target URL
-document.getElementById('gameFrame').src = 'https://1v1lolonline.github.io/1v1-lol-2/';
+window.addEventListener('load', function() {
+    // Initialize Ruffle
+    var ruffle = window.RufflePlayer.newest();
+    var container = document.getElementById('game-container');
+    var player = ruffle.createPlayer();
+    container.appendChild(player);
+
+    // Load the SWF file
+    player.load('https://github.com/spencer112/Unblocked-Flash-Games/raw/master/happyWheels.swf');
+});

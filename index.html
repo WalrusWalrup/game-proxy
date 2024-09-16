@@ -3,37 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sprinter with Ruffle</title>
+    <title>Flash Game with Ruffle</title>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <style>
         body, html {
             height: 100%;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
+            overflow: hidden;
         }
         #ruffle {
-            width: 80%;
-            height: 80%;
-            max-width: 800px;
-            max-height: 600px;
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
     <div id="ruffle"></div>
+
     <script>
-        window.addEventListener("load", () => {
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            autoplay: "on",
+            contextMenu: false,
+            unmuteOverlay: "hidden",
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
             const container = document.getElementById("ruffle");
-            player.id = "player";
+            container.appendChild(player);
+
             player.style.width = "100%";
             player.style.height = "100%";
-            container.appendChild(player);
-            player.load("https://oldflashgames.github.io/games5/sprinter.swf");
+
+            player.load('https://oldflashgames.github.io/games5/sprinter.swf');
         });
     </script>
 </body>

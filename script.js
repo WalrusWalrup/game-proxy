@@ -5,6 +5,6 @@ window.addEventListener('load', function() {
     var player = ruffle.createPlayer();
     container.appendChild(player);
 
-    // Load the SWF file
-    player.load('https://github.com/spencer112/Unblocked-Flash-Games/raw/master/happyWheels.swf');
+    // Use CORS proxy to load the SWF file
+    player.load('https://cors-anywhere.herokuapp.com/https://github.com/spencer112/Unblocked-Flash-Games/raw/master/happyWheels.swf');
 });

@@ -3,21 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Proxy</title>
+    <title>Play Happy Wheels with Ruffle</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <style>
         body, html {
             height: 100%;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
         }
-        iframe {
+        #game-container {
             width: 100%;
             height: 100%;
-            border: none;
+            max-width: 800px;
+            max-height: 600px;
         }
     </style>
 </head>
 <body>
-    <iframe id="gameFrame" title="Proxied Game"></iframe>
-    <script src="script.js"></script>
+    <div id="game-container"></div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var ruffle = window.RufflePlayer.newest();
+            var container = document.getElementById('game-container');
+            var player = ruffle.createPlayer();
+            container.appendChild(player);
+
+            // Load the SWF file
+            player.load('https://github.com/spencer112/Unblocked-Flash-Games/raw/master/happyWheels.swf');
+        });
+    </script>
 </body>
 </html>
